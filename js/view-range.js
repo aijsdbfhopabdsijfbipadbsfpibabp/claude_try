@@ -4,7 +4,7 @@
 
 import { BASIS } from './schema.js';
 import {
-  h, clear, fmtOku, fmtOkuRange, fmtOkuTick, fmtUsd, fmtUsdTick, fmtRatio, fmtPeriod, niceTicks,
+  h, clear, fmtOku, okuRangeNodes, fmtOkuTick, fmtUsd, fmtUsdTick, fmtRatio, fmtPeriod, niceTicks,
   srcName, srcDetail, swatch, basisColor, basisLabel, checkBadge, statusTag, periodTypeTag, viaTag,
   scopeChips, calc, showTip, showTipAt, hideTip, rowDetail,
 } from './format.js';
@@ -30,7 +30,7 @@ export function renderRange(root, ledger, { segId, year }) {
   if (range && range.n >= 2) {
     lead = [
       `${year}年の${segName}は、${range.n}件の数字が `,
-      h('strong', null, fmtOkuRange(range.min, range.max)),
+      h('strong', null, okuRangeNodes(range.min, range.max)),
       ' に分かれています。',
       range.min > 0 ? ['最大は最小の ', calc(fmtRatio(range.max / range.min)), '。'] : null,
     ];

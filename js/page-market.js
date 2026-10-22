@@ -10,12 +10,12 @@ import { renderTable } from './view-table.js';
 import { renderRevisions, renderTodo } from './view-review.js';
 
 const SECTIONS = [
-  ['range', '定義の幅'],
-  ['series', '時系列'],
-  ['matrix', '定義マトリクス'],
-  ['table', '一覧表'],
-  ['revisions', '改訂と不一致'],
-  ['todo', '要確認リスト'],
+  ['range', '定義の幅', 'Range'],
+  ['series', '時系列', 'Time series'],
+  ['matrix', '定義マトリクス', 'Definitions'],
+  ['table', '一覧表', 'Ledger'],
+  ['revisions', '改訂と不一致', 'Revisions'],
+  ['todo', '要確認リスト', 'To check'],
 ];
 
 boot(async (main) => {
@@ -47,14 +47,19 @@ boot(async (main) => {
 
   // ---- 見出し ----
   clear(main);
-  main.append(
+  const tile = (label, value, unit, cls) => h('div', { class: cls ?? null },
+    h('dt', null, label), h('dd', null, String(value), unit ? h('small', null, unit) : null));
+  main.append(h('div', { class: 'page-head' },
     h('nav', { class: 'breadcrumb', 'aria-label': 'パンくず' }, h('a', { href: './' }, '市場一覧'), ' › ', market.name),
-    h('h1', null, market.name, h('span', { class: 'geo' }, market.geo)),
+    h('p', { class: 'eyebrow' }, `Market · ${market.geo}`),
+    h('h1', null, market.name),
     market.note ? h('p', { class: 'lead' }, market.note) : null,
-    h('dl', { class: 'stats' },
-      [['行', stats.rows], ['出典', stats.sources], ['要確認', stats.todo], ['最終更新', stats.lastRetrieved ?? '—']]
-        .map(([k, v]) => h('div', null, h('dt', null, k), h('dd', null, String(v))))),
-  );
+    h('dl', { class: 'stat-tiles' },
+      tile('台帳の数字', stats.rows, '行'),
+      tile('出典', stats.sources, '件'),
+      tile('未確認・要確認', stats.todo, '行'),
+      tile('最終更新', stats.lastRetrieved ?? '—', null, 'is-date')),
+  ));
 
   // ---- セグメントの選択（1〜3のビューに効く） ----
   const segSelect = h('select', { id: 'seg' },
@@ -72,10 +77,13 @@ boot(async (main) => {
   // ---- 各セクション ----
   const sec = {};
   const segHeading = {};
-  for (const [sid, label] of SECTIONS) {
+  for (const [i, [sid, label, en]] of SECTIONS.entries()) {
     const title = h('h2', null, label);
     const body = h('div', { class: 'section-body' });
-    const el = h('section', { id: sid, class: 'section', 'aria-labelledby': `${sid}-h` }, h('div', { class: 'section-head' }, title), body);
+    const el = h('section', { id: sid, class: 'section', 'aria-labelledby': `${sid}-h` },
+      h('div', { class: 'section-head' },
+        h('div', null, h('p', { class: 'eyebrow' }, `${String(i + 1).padStart(2, '0')} — ${en}`), title)),
+      body);
     title.id = `${sid}-h`;
     sec[sid] = { el, body, head: el.firstChild };
     if (['range', 'series', 'matrix'].includes(sid)) {

@@ -4,13 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>使い方ガイド | 市場規模の出典台帳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
 <header class="site-header">
-  <div class="container">
-    <a class="site-name" href="./">市場規模の出典台帳</a>
+  <div class="container header-inner">
+    <a class="brand" href="./" aria-label="市場規模の出典台帳 トップへ">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="brand-text"><span class="brand-name">市場規模の出典台帳</span><span class="brand-sub">Market Size Ledger</span></span>
+    </a>
     <nav class="site-nav" aria-label="サイト内">
       <a href="./">市場一覧</a>
       <a href="sources.html">出典カタログ</a>
@@ -20,8 +26,11 @@
   </div>
 </header>
 <main id="main" class="container prose">
+  <div class="page-head">
+  <p class="eyebrow">Guide</p>
   <h1>使い方ガイド</h1>
   <p class="lead">市場や経済の数字に慣れていない人向けに、この台帳の読み方と使い方を順番に説明します。5分ほどで読めます。</p>
+  </div>
 
   <nav class="toc toc-block" aria-label="目次">
     <a href="#why">1. なぜこの台帳があるの？</a>
@@ -115,8 +124,18 @@
   </section>
 </main>
 <footer class="site-footer">
-  <div class="container">
-    <p>数字は各原典の利用条件に従って扱ってください。調査会社の数字は、転載に許諾が必要な場合があります（<a href="glossary.html#license">再利用の可否</a>）。</p>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <p class="footer-title">Market Size Ledger</p>
+      <p>市場規模の数字を、定義と一緒に。</p>
+    </div>
+    <nav class="footer-nav" aria-label="フッター">
+      <a href="./">市場一覧</a>
+      <a href="sources.html">出典カタログ</a>
+      <a href="guide.html">使い方ガイド</a>
+      <a href="glossary.html">用語集</a>
+    </nav>
+    <p class="footer-note">数字は各原典の利用条件に従って扱ってください。調査会社の数字は、転載に許諾が必要な場合があります（<a href="glossary.html#license">再利用の可否</a>）。</p>
   </div>
 </footer>
 </body>

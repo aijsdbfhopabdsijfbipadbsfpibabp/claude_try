@@ -61,6 +61,12 @@ export function fmtOkuRange(min, max) {
   return `${fmtOku(min, { unit: false })}〜${fmtOku(max)}`;
 }
 
+/** 幅の表示を、改行が「〜」の後でだけ起きる形で返す（「億 / 円」のように途中で切れないように） */
+export function okuRangeNodes(min, max) {
+  if (min === max) return h('span', { class: 'nw' }, fmtOku(min));
+  return [h('span', { class: 'nw' }, `${fmtOku(min, { unit: false })}〜`), h('wbr'), h('span', { class: 'nw' }, fmtOku(max))];
+}
+
 /** 軸の目盛り用の短い書き方（0 / 5,000億 / 1兆 / 1.5兆） */
 export function fmtOkuTick(v) {
   if (v === 0) return '0';
