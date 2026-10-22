@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>使い方ガイド | 市場規模の出典台帳</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="site-header">
+  <div class="container">
+    <a class="site-name" href="./">市場規模の出典台帳</a>
+    <nav class="site-nav" aria-label="サイト内">
+      <a href="./">市場一覧</a>
+      <a href="sources.html">出典カタログ</a>
+      <a href="guide.html" aria-current="page">使い方</a>
+      <a href="glossary.html">用語集</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="container prose">
+  <h1>使い方ガイド</h1>
+  <p class="lead">市場や経済の数字に慣れていない人向けに、この台帳の読み方と使い方を順番に説明します。5分ほどで読めます。</p>
+
+  <nav class="toc toc-block" aria-label="目次">
+    <a href="#why">1. なぜこの台帳があるの？</a>
+    <a href="#words">2. まず覚える5つの言葉</a>
+    <a href="#steps">3. 画面の見かた（順番に）</a>
+    <a href="#quote">4. 数字を引用するときの手順</a>
+    <a href="#add">5. 数字を足す（更新する）</a>
+    <a href="#faq">6. よくある質問</a>
+  </nav>
+
+  <section class="section" id="why">
+    <h2>1. なぜこの台帳があるの？</h2>
+    <p>「化粧品の市場規模は？」と調べると、<strong>2.6兆円</strong>と書く記事もあれば、<strong>1.4兆円</strong>や<strong>3.2兆円</strong>と書く記事もあります。どれかが間違っているわけではありません。<strong>数え方が違う</strong>のです。</p>
+    <p>たとえるなら「クラスの身長」を、靴を履いて測るか、裸足で測るか、の違いです。測り方が違えば数字も違います。この台帳は、数字を<strong>「誰が・どう数えたか」と一緒に並べて</strong>、取り違えを防ぐための道具です。</p>
+  </section>
+
+  <section class="section" id="words">
+    <h2>2. まず覚える5つの言葉</h2>
+    <dl class="guide-terms">
+      <dt>出荷額 と 小売額</dt>
+      <dd>メーカーがお店に売った金額（出荷額）と、お客さんがお店で払った金額（小売額）。お店の儲けが乗るぶん、<strong>小売額のほうが大きく</strong>なります。</dd>
+      <dt>年度 と 暦年</dt>
+      <dd>暦年は1月〜12月。年度は4月〜翌年3月。「2024年度」と「2024年」は、9か月しか重なっていません。</dd>
+      <dt>実績・速報・予測</dt>
+      <dd>実績は確定した数字、速報はあとで変わるかもしれない数字、予測は未来の見込みです。<strong>予測を実績のように使わない</strong>ことが大切です。</dd>
+      <dt>原典 と 経由先</dt>
+      <dd>原典は数字を作った人（調査会社や国など）。経由先は、自分がその数字を読んだ場所（ニュース記事やまとめサイト）。又聞きの数字は写し間違いがあり得ます。</dd>
+      <dt>確認済み・未確認・要確認</dt>
+      <dd>原典で数字を見て確かめたものが「確認済み」。記事でしか見ていないものが「未確認」。どこか怪しいものが「要確認」です。</dd>
+    </dl>
+    <p class="small muted">もっと詳しい説明は<a href="glossary.html">用語集</a>にあります。</p>
+  </section>
+
+  <section class="section" id="steps">
+    <h2>3. 画面の見かた（順番に）</h2>
+    <ol class="guide-steps">
+      <li><strong>市場一覧を開く</strong><br>トップページ（<a href="./">市場一覧</a>）に市場ごとのカードがあります。大きな数字は「数え方によって、この範囲に数字が散らばっている」という<strong>幅</strong>です。カードを押すと、その市場のページに移ります。</li>
+      <li><strong>上の「セグメント」を選ぶ</strong><br>「全体」「スキンケア」など、見たい範囲を選びます。最初は「全体」のままで大丈夫です。</li>
+      <li><strong>「定義の幅」を見る（いちばん大事）</strong><br>その年の数字が、小さい順に横棒で並びます。棒の色が<strong>数え方</strong>を表します。棒の左に、誰の数字か・年度か暦年か・何を含むか（✓含む／✗含まない／?不明）が書いてあります。<br>→ ここで「同じ年でもこんなに違うのか」をつかみます。右上の ◀ ▶ で年を変えられます。</li>
+      <li><strong>「時系列」で流れを見る</strong><br>同じ数え方の数字だけを線で結んでいます。実線は実績、破線は予測です。点にマウスを乗せると詳しい情報が出ます。違う色の点どうしは比べられない（数え方が違う）と考えてください。</li>
+      <li><strong>「定義マトリクス」で中身を比べる</strong><br>表で「どの数字が何を含んでいるか」を✓✗?で一覧できます。?が多い数字は、まだよく分かっていない数字です。</li>
+      <li><strong>「一覧表」で元の数字を探す</strong><br>すべての数字が表になっています。上の選択欄で絞り込めます。出典名を押すと、元の記事や資料のページが開きます。</li>
+      <li><strong>「改訂と不一致」「要確認リスト」で注意点を見る</strong><br>予測があとで実績に変わったもの（改訂）や、同じ資料のはずなのに記事によって数字が違うもの（不一致）が並びます。ここに出ている数字は、使う前に気をつけましょう。</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quote">
+    <h2>4. 数字を引用するときの手順</h2>
+    <p>レポートや発表で市場規模を使うときは、次のチェックをしてください。</p>
+    <ol class="guide-steps">
+      <li>使いたい数字を「定義の幅」か「一覧表」で見つける。</li>
+      <li><strong>確認状態</strong>を見る。「△ 未確認」「! 要確認」が付いていたら、出典名を押して原典で確かめる（できなければ「〜とされる」と書く）。</li>
+      <li><strong>予測でないか</strong>確かめる（「予測」のタグ）。</li>
+      <li>数字と一緒に<strong>3点セット</strong>を書く。<br><code>2兆6,430億円（矢野経済研究所、2025年度、メーカー出荷金額ベース）</code></li>
+      <li>別の出典の数字と比べるときは、<strong>数え方と年度/暦年がそろっているか</strong>確かめる。そろっていなければ「数え方が違うので単純比較できない」と添える。</li>
+    </ol>
+    <p class="small muted">「計算」の印が付いた数字（前年比など）は、この画面が計算した値で、原典に書かれた数字ではありません。また、調査会社の数字は転載に許可が必要なことがあります。</p>
+  </section>
+
+  <section class="section" id="add">
+    <h2>5. 数字を足す（更新する）</h2>
+    <p>新しい記事で市場規模の数字を見つけたら、台帳に足していきます。いちばん簡単なのは <strong>Claude に頼む</strong>方法です。</p>
+    <ol class="guide-steps">
+      <li>記事のURLをコピーする。</li>
+      <li>Claude に <code>この記事の数字を台帳に追加して: https://…</code> と送る。</li>
+      <li>Claude が数字を拾って追加し、チェックまでしてくれます。返ってきた報告で「不一致」などの注意が出ていないか見る。</li>
+      <li>反映されたら、サイトを開き直して数字が増えたことを確かめる。</li>
+    </ol>
+    <p>新しい市場（たとえば「ビール」）を始めたいときは、<code>「ビール（日本）」の市場を追加して</code> と頼めば、追加案を出してくれます。</p>
+    <details class="todo">
+      <summary>自分で直接書きたい人向け</summary>
+      <div class="todo-body">
+        <p>数字は <code>data/observations/市場ID.jsonl</code> に、1つの数字を1行で書きます。既存の行をコピーして、値・年・出典を書き換えるのが簡単です。出典が新しければ <code>data/sources.json</code> にも足します。保存して GitHub に送ると、書き間違いがないか自動でチェックされます。</p>
+        <p>ルール: わからない項目は推測で埋めず <code>unknown</code> や <code>null</code> にする／記事でしか見ていない数字は <code>unverified</code> にする／古い数字も消さない。</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="faq">
+    <h2>6. よくある質問</h2>
+    <dl class="guide-terms">
+      <dt>結局、どの数字が「正しい」の？</dt>
+      <dd>どれも、その数え方では正しい数字です。目的に合う数え方を選びます。メーカーの売上規模を知りたいなら出荷額、消費者がいくら使っているか知りたいなら小売額、が目安です。</dd>
+      <dt>薄く表示されている数字は？</dt>
+      <dd>同じ発行元の新しい発表で置き換わった古い数字です。履歴として残しています。普段は濃いほうを使ってください。</dd>
+      <dt>「≠」や「不一致あり」は？</dt>
+      <dd>同じ資料が元のはずなのに、記事によって数字が違うものです。原典で確かめるまでは使わないほうが安全です。</dd>
+      <dt>ファイルを開いても何も表示されない</dt>
+      <dd>ファイルを直接ダブルクリックすると動きません。公開されたURL（GitHub Pages など）で開くか、<code>npx serve .</code> で開いてください。</dd>
+    </dl>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>数字は各原典の利用条件に従って扱ってください。調査会社の数字は、転載に許諾が必要な場合があります（<a href="glossary.html#license">再利用の可否</a>）。</p>
+  </div>
+</footer>
+</body>
+</html>

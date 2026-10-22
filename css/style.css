@@ -464,3 +464,10 @@ tr.is-flash > td { animation: flash 2.4s ease-out; }
   .rc-bar, .swatch { forced-color-adjust: none; }
   .badge, .tag, .scope-chip { border: 1px solid CanvasText; }
 }
+
+/* ---------- 使い方ガイド ---------- */
+.guide-terms { max-width: 50rem; }
+.guide-terms dt { font-weight: 700; margin-top: .9rem; }
+.guide-terms dd { margin: .2rem 0 0; color: var(--ink-2); }
+.guide-steps { max-width: 50rem; padding-left: 1.4rem; }
+.guide-steps li { margin-bottom: .8rem; }
