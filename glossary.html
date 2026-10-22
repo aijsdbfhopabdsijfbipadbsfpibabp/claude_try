@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>用語集 | 市場規模の出典台帳</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/page-glossary.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="site-header">
+  <div class="container">
+    <a class="site-name" href="./">市場規模の出典台帳</a>
+    <nav class="site-nav" aria-label="サイト内">
+      <a href="./">市場一覧</a>
+      <a href="sources.html">出典カタログ</a>
+      <a href="glossary.html" aria-current="page">用語集</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="container prose">
+  <h1>用語集</h1>
+  <p class="lead">台帳の項目の意味を短くまとめています。表の「値」が、台帳のファイルに書く文字列です。</p>
+
+  <nav class="toc toc-block" aria-label="用語">
+    <a href="#source-via">原典と経由先</a>
+    <a href="#period-type">年度と暦年</a>
+    <a href="#basis">出荷と小売（数え方）</a>
+    <a href="#scope">範囲（含む・含まない）</a>
+    <a href="#status">実績・速報・推計・予測</a>
+    <a href="#check">確認状態</a>
+    <a href="#unit">単位</a>
+    <a href="#series">系列</a>
+    <a href="#revision">改訂と不一致</a>
+    <a href="#calc">計算値</a>
+    <a href="#source-type">出典の種類</a>
+    <a href="#license">入手性と再利用の可否</a>
+  </nav>
+
+  <section class="section" id="source-via">
+    <h2>原典と経由先（source / via）</h2>
+    <p><strong>原典</strong>は、その数字を作った人・組織の資料です（調査会社のプレスリリース、政府統計など）。<strong>経由先</strong>は、自分がその数字を実際に読んだ場所です（ニュース記事、まとめサイトなど）。</p>
+    <p>台帳では <code>source</code> に原典、<code>via</code> に経由先の出典IDを書きます。原典で直接読んだときは <code>via</code> を <code>null</code> にします。原典が分からないときは <code>source</code> を <code>"unknown"</code> にします。経由先で読んだ数字は、書き写しの誤りや古い版の引用が混じることがあるので、原典で確かめるまで「未確認」として扱います。</p>
+  </section>
+
+  <section class="section" id="period-type">
+    <h2>年度と暦年（period_type）</h2>
+    <p><strong>暦年</strong>は1月〜12月、<strong>年度</strong>は4月〜翌3月です。「2024年度」は2024年4月〜2025年3月なので、「2024年」とは9か月しか重なりません。調査会社は年度、貿易統計や生産動態統計は暦年で集計することが多く、同じ「2024」でも期間がずれます。</p>
+    <p>時系列グラフでは各期間の中心に点を置きます。暦年の2024は2024年7月1日、年度の2024は2024年10月1日の位置です。年度か暦年か分からない数字は暦年の位置に置き、点に「?」を付けます。</p>
+    <div data-enum="PERIOD_TYPE"></div>
+  </section>
+
+  <section class="section" id="basis">
+    <h2>出荷と小売（basis = 数え方）</h2>
+    <p>市場規模の数字は、どの段階のお金を数えるかで大きく変わります。<strong>メーカー出荷額</strong>はメーカーが卸・小売に売った金額、<strong>小売・購入額</strong>は消費者が支払った金額に近い数え方で、流通の取り分のぶん小売のほうが大きくなります。<strong>国内生産の出荷額</strong>は国内工場で作った分だけなので、輸入品を含みません。</p>
+    <p>受託製造（OEM）の売上や輸出入額は、市場規模そのものではなく関連指標です。セグメント定義で <code>related: true</code> を付けて区別します。</p>
+    <div data-enum="BASIS"></div>
+  </section>
+
+  <section class="section" id="scope">
+    <h2>範囲（scope：含む・含まない）</h2>
+    <p>数え方が同じでも、何を含めるかで数字は変わります（化粧品なら輸入品や医薬部外品を含むか）。判断材料になる項目は市場ごとに <code>scope_flags</code> として決め、各行の <code>scope</code> に <code>true</code>（含む）/ <code>false</code>（含まない）/ <code>null</code>（不明）を書きます。書いていない項目は「不明」として扱います。</p>
+    <p>画面では ✓ = 含む、✗ = 含まない、? = 不明 で表します。</p>
+  </section>
+
+  <section class="section" id="status">
+    <h2>実績・速報・推計・予測（status）</h2>
+    <p><strong>速報</strong>はあとで確定値に置き換わる値、<strong>推計</strong>は実績の期間についての見込み、<strong>予測</strong>は将来の期間の値です。時系列グラフでは、実績は実線、予測は破線、推計は点線、速報と推計は白抜きの点で描きます。</p>
+    <div data-enum="STATUS"></div>
+  </section>
+
+  <section class="section" id="check">
+    <h2>確認状態（check）</h2>
+    <p>原典の文面で確かめた数字だけを「確認済み」にします。経由先でしか見ていない数字は「未確認」、年・定義・原典のどれかに疑問がある数字は「要確認」です。原典が分からない数字（<code>source: "unknown"</code>）は確認済みにできません。</p>
+    <div data-enum="CHECK"></div>
+  </section>
+
+  <section class="section" id="unit">
+    <h2>単位（unit）</h2>
+    <p>台帳には原典に書かれたままの値と単位を保存し、画面で億円にそろえます。大きな数字は「2兆6,430億円」の形で書きます。ドル建ての数字は為替の前提が入るので円に換算せず、別の軸（別のグラフ）で表示します。</p>
+    <div data-enum="UNIT"></div>
+  </section>
+
+  <section class="section" id="series">
+    <h2>系列</h2>
+    <p>出典（<code>source</code>）・数え方（<code>basis</code>）・期間の種類（<code>period_type</code>）・セグメント・範囲（<code>scope</code>）がすべて同じ数字の並びを、1つの系列と呼びます。時系列グラフで線で結ぶのは同じ系列の点だけです。定義の違う点どうしを結ぶと、数え方の違いが「増減」に見えてしまうからです。</p>
+    <p>同じ系列・同じ期間に複数の数字があるときは1つを標準表示にし、ほかは薄く表示します。</p>
+  </section>
+
+  <section class="section" id="revision">
+    <h2>改訂と不一致</h2>
+    <p><strong>改訂</strong>: 同じ発行元・同じ期間・同じ定義で、発行日の違う数字です。たとえば前年の発表では予測だった値が、翌年の発表で実績になったもの。古い数字も消さずに残し、画面では新しい発表を標準表示、古い発表を薄く表示します。</p>
+    <p><strong>不一致</strong>: 同じ原典を名乗るのに、経由先によって値が違う数字です。経由先が集計範囲を変えている、書き写しを誤っている、などの可能性があるので、原典の文面で確かめるまではどちらも引用しないほうが安全です。</p>
+  </section>
+
+  <section class="section" id="calc">
+    <h2>計算値</h2>
+    <p>前年比・倍率・構成比は台帳に保存せず、画面で計算します。計算した値は <span class="calc">104.1%<span class="calc-tag">計算</span></span> のように、斜体と「計算」の印で原典の値と区別します。原典に書かれた比率（「前年度比104.1%」など）は、各行の注記（<code>note</code>）に原文のまま残します。</p>
+  </section>
+
+  <section class="section" id="source-type">
+    <h2>出典の種類（type）</h2>
+    <div data-enum="SOURCE_TYPE"></div>
+  </section>
+
+  <section class="section" id="license">
+    <h2>入手性（access）と再利用の可否（license）</h2>
+    <p>再利用の可否は、台帳を公開するときの表示ルールに使います。公開版では、<code>open</code> の出典の数字だけを表示し、<code>restricted</code> / <code>unknown</code> の出典は出典名・期間・定義・リンクだけを出して数字を伏せる予定です。</p>
+    <div data-enum="ACCESS"></div>
+    <div data-enum="LICENSE"></div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>数字は各原典の利用条件に従って扱ってください。調査会社の数字は、転載に許諾が必要な場合があります（<a href="glossary.html#license">再利用の可否</a>）。</p>
+  </div>
+</footer>
+</body>
+</html>

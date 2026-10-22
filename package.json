@@ -1,0 +1,13 @@
+{
+  "name": "market-size-ledger",
+  "private": true,
+  "description": "市場規模の出典台帳（静的サイト）",
+  "type": "module",
+  "scripts": {
+    "validate": "node tools/validate.mjs",
+    "serve": "npx --yes serve ."
+  },
+  "engines": {
+    "node": ">=18.17"
+  }
+}

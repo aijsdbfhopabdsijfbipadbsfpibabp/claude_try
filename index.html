@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>市場規模の出典台帳</title>
+  <meta name="description" content="市場規模の数字を、出典ごとの定義と一緒に並べて見る台帳">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/page-index.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="site-header">
+  <div class="container">
+    <a class="site-name" href="./">市場規模の出典台帳</a>
+    <nav class="site-nav" aria-label="サイト内">
+      <a href="./" aria-current="page">市場一覧</a>
+      <a href="sources.html">出典カタログ</a>
+      <a href="glossary.html">用語集</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="container">
+  <h1>市場規模の出典台帳</h1>
+  <p class="lead">出典ごとにバラバラな「市場規模」の数字を、<strong>定義と一緒に</strong>並べて見るための台帳です。同じ年の同じ市場でも、数え方（出荷か小売か、国内生産だけか輸入を含むか、年度か暦年か）で数字は倍以上変わります。その違いを見える形にして、引用するときに取り違えないようにします。</p>
+
+  <h2 class="sr-only">市場</h2>
+  <ul id="markets" class="market-list">
+    <li class="loading">読み込み中…</li>
+  </ul>
+
+  <section class="section about">
+    <h2>台帳の書き方</h2>
+    <ol class="rules">
+      <li><strong>1つの数字 = 1行。</strong>1つの記事に5つの数字があれば5行になる。</li>
+      <li><strong>数字は必ず「誰が・何ベースで・どの期間か」とセットで書く。</strong>定義が分からない項目は空欄にせず <code>unknown</code> / <code>null</code> と明記する。</li>
+      <li><strong>確認したことだけ書く。</strong>原典の文面で確認した数字は <code>verified</code>、ニュース記事やまとめサイト経由でしか見ていない数字は <code>unverified</code>。推測で埋めない。</li>
+      <li><strong>原典と経由先を分けて記録する。</strong>数字を作ったのは誰か（<code>source</code>）と、どこで読んだか（<code>via</code>）を別の項目にする。</li>
+      <li><strong>計算で出せる値は保存しない。</strong>前年比・構成比・倍率は画面で計算する。保存するのは原典に書かれた絶対値だけ。</li>
+      <li><strong>古い数字も消さない。</strong>予測が実績に置き換わっても両方の行を残す（改訂の履歴になる）。</li>
+    </ol>
+    <p class="small muted">データは <code>data/</code> にあります。行を足したら <code>node tools/validate.mjs</code> で検証してください。用語は<a href="glossary.html">用語集</a>にまとめています。</p>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>数字は各原典の利用条件に従って扱ってください。調査会社の数字は、転載に許諾が必要な場合があります（<a href="glossary.html#license">再利用の可否</a>）。</p>
+  </div>
+</footer>
+</body>
+</html>

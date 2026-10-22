@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cosmetics-jp",
+    "name": "化粧品（日本）",
+    "geo": "JP",
+    "segments": [
+      { "id": "total",     "name": "全体" },
+      { "id": "skincare",  "name": "スキンケア",     "parent": "total" },
+      { "id": "makeup",    "name": "メイクアップ",   "parent": "total" },
+      { "id": "haircare",  "name": "ヘアケア",       "parent": "total" },
+      { "id": "mens",      "name": "男性用化粧品",   "parent": "total" },
+      { "id": "fragrance", "name": "フレグランス",   "parent": "total" },
+      { "id": "ec",        "name": "EC",             "related": true },
+      { "id": "oem",       "name": "受託製造（OEM）", "related": true },
+      { "id": "export",    "name": "輸出",           "related": true },
+      { "id": "export-cn", "name": "輸出（中国向け）", "parent": "export", "related": true },
+      { "id": "import",    "name": "輸入",           "related": true },
+      { "id": "import-kr", "name": "輸入（韓国から）", "parent": "import", "related": true }
+    ],
+    "scope_flags": [
+      { "id": "imports",     "label": "輸入品を含む" },
+      { "id": "quasi_drugs", "label": "医薬部外品を含む" }
+    ],
+    "note": "最初の市場。数え方の違いで『全体』が約2.3倍まで開く例。"
+  }
+]
